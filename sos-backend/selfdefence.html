@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Defense Tips</title>
+    <link rel="stylesheet" href="selfdefence.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style> .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 30px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+        text-decoration: underline;
+    }</style>
+    <nav class="navbar">
+        <div class="logo">📍 Women Safety Map</div>
+        <ul class="nav-links">
+            <li><a href="/livemap.html">MAP</a></li>
+            <li><a href="/contactlist.html">Contacts</a></li>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/profile.html">Profile</a></li>
+            <li><a href="/login.html">Login/signup</a></li>
+        </ul>
+    </nav>
+    
+    <div class="particles" id="particles"></div>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="animate-title">Essential Self-Defense Tips</h1>
+            <p class="animate-subtitle">Learn vital self-defense techniques and awareness strategies to keep yourself safe</p>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+                <p>Scroll to explore</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="tips-container">
+        <div class="section-title">
+            <h2>Safety First</h2>
+            <p>Master these essential techniques for personal protection</p>
+        </div>
+        <div class="tips-grid" id="tipsGrid"></div>
+    </main>
+
+    <div class="modal" id="tipModal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-icon" id="modalIcon"></div>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <button class="modal-button">Got it!</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Important Notice</h3>
+            <p>Remember: These are general tips. For proper self-defense training, please consult qualified instructors and attend professional classes.</p>
+            <div class="footer-decoration"></div>
+        </div>
+    </footer>
+
+    <script src="selfdefence.js"></script>
+</body>
+</html>
