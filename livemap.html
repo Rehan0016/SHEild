@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety Local Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Main Content Layout */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        /* Map Styling */
+        #map {
+            width: 75%;
+            height: 75vh;
+            border: 3px solid #007bff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">📍 Women Safety Map</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="livemap.html">Map</a></li>
+            <li><a href="contactlist.html">Contacts</a></li>
+            <li><a href="aboutUs.html">About</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login/signup</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div id="map"></div>
+    </div>
+
+    <script>
+        var userLat = 30.517076;
+        var userLon = 76.659096;
+
+        var map = L.map('map').setView([userLat, userLon], 12); // Zoomed out to show more area
+
+        // Satellite View Tile Layer
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+
+        // Mark user's current location
+        L.marker([userLat, userLon]).addTo(map)
+            .bindPopup("📍 You are here!").openPopup();
+
+        // Danger zones a little far away (2-5 km radius)
+        var dangerZones = [
+            { lat: 30.5400, lon: 76.6800, level: 'High', place: 'Sector 20' },
+            { lat: 30.5600, lon: 76.6500, level: 'Medium', place: 'Near Railway Station' },
+            { lat: 30.5050, lon: 76.6200, level: 'Low', place: 'Village outskirts' }
+        ];
+
+        dangerZones.forEach(zone => {
+            var color = zone.level === 'High' ? 'red' : zone.level === 'Medium' ? 'orange' : 'yellow';
+            L.circle([zone.lat, zone.lon], {
+                color: color,
+                fillColor: color,
+                fillOpacity: 0.5,
+                radius: 1000
+            }).addTo(map).bindPopup(`⚠️ ${zone.place} - ${zone.level} Risk`);
+        });
+
+        // Unsafe at night zones (4-7 km away)
+        var redZones = [
+            { lat: 30.5500, lon: 76.6900, place: 'Old Industrial Area' },
+            { lat: 30.5700, lon: 76.6300, place: 'Highway Exit' }
+        ];
+
+        redZones.forEach(zone => {
+            L.circle([zone.lat, zone.lon], {
+                color: 'darkred',
+                fillColor: 'darkred',
+                fillOpacity: 0.7,
+                radius: 1200
+            }).addTo(map).bindPopup(`🚨 ${zone.place} - Unsafe at Night`);
+        });
+
+    </script>
+</body>
+</html>

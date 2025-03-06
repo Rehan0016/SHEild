@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Assistance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('pexels-freestockpro-12969085.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            margin-left: 57%;
+            margin-bottom: 7%;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #sosButton { background: red; color: white; }
+        #sosButton:hover { background: darkred; }
+
+        #policeButton { background: blue; color: white; }
+        #policeButton:hover { background: darkblue; }
+
+        #ambulanceButton { background: green; color: white; }
+        #ambulanceButton:hover { background: darkgreen; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🚨 Emergency Assistance</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="livemap.html">Map</a></li>
+            <li><a href="contactlist.html">Contacts</a></li>
+            <li><a href="login.html">Login/signup</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Emergency Assistance</h1>
+        <p>Click a button to take immediate action.</p>
+        <button id="sosButton">🚨 SOS Alert</button>
+        <button id="policeButton">🚔 Call Police</button>
+        <button id="ambulanceButton">🚑 Call Ambulance</button>
+    </div>
+
+    <script>
+        document.getElementById("sosButton").addEventListener("click", function() {
+            alert("🚨 SOS Activated! Calling & Sending Alerts...");
+            let contacts = JSON.parse(localStorage.getItem("emergencyContacts")) || [];
+            if (contacts.length > 0) {
+                let firstContact = contacts[0].phone;
+                window.location.href = `tel:${firstContact}`;
+            } else {
+                alert("⚠ No emergency contacts found!");
+            }
+        });
+
+        document.getElementById("policeButton").addEventListener("click", function() {
+            window.location.href = "tel:100"; // India Police Helpline
+        });
+
+        document.getElementById("ambulanceButton").addEventListener("click", function() {
+            window.location.href = "tel:108"; // India Ambulance Helpline
+        });
+    </script>
+</body>
+</html>

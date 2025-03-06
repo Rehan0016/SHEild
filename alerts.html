@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Alerts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: white;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            margin: 100px auto;
+            width: 60%;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: red;
+        }
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+        #alertBox {
+            margin-top: 20px;
+            padding: 15px;
+            background: yellow;
+            color: black;
+            border-radius: 5px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">📍 Women Safety Map</div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="livemap.html">MAP</a></li>
+            <li><a href="contactlist.html">Contacts</a></li>
+            <li><a href="aboutUs.html">About</a></li>
+            <li><a href="login.html">Login/signup</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>🚨 Real-Time Alerts 🚨</h1>
+        <p>Stay updated with high-risk area alerts in real time.</p>
+        <button id="checkAlerts">Check for Alerts</button>
+        <div id="alertBox">No alerts at the moment.</div>
+    </div>
+
+    <script>
+        document.getElementById("checkAlerts").addEventListener("click", async function() {
+            alert("Checking for alerts...");
+            try {
+                let response = await fetch("http://localhost:5000/get-alerts");
+                let data = await response.json();
+                if (data.alerts && data.alerts.length > 0) {
+                    document.getElementById("alertBox").innerText = data.alerts.join("\n");
+                    document.getElementById("alertBox").style.display = "block";
+                } else {
+                    document.getElementById("alertBox").innerText = "No alerts at the moment.";
+                    document.getElementById("alertBox").style.display = "block";
+                }
+            } catch (error) {
+                console.error("Error fetching alerts:", error);
+                alert("❌ Failed to get alerts.");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* General Reset and Background Image */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('kjh.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Transparent Div */
+        .content {
+            position: relative;
+            z-index: 2;
+            margin-top: 60px; /* to avoid navbar overlap */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* semi-transparent background */
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 100px auto;
+            color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer Styles */
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent footer */
+            color: #fff;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">📍 Women Safety Map</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="livemap.html">Map</a></li>
+        <li><a href="contactlist.html">Contacts</a></li>
+        <li><a href="aboutUs.html">About</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="login.html">login</a></li>
+    </ul>
+</nav>
+
+<!-- Main Content -->
+<div class="content">
+    <h2>User Profile</h2>
+    <form id="profile-form">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" required>
+
+        <button type="submit">Save Profile</button>
+    </form>
+
+    <h3>Your Saved Profile</h3>
+    <div id="saved-profile">
+        <p><strong>Name:</strong> <span id="saved-name">Not Set</span></p>
+        <p><strong>Email:</strong> <span id="saved-email">Not Set</span></p>
+        <p><strong>Phone:</strong> <span id="saved-phone">Not Set</span></p>
+        <p><strong>Address:</strong> <span id="saved-address">Not Set</span></p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Your Company | <a href="#">Privacy Policy</a></p>
+</footer>
+
+<script>
+    // Load saved profile from LocalStorage when the page loads
+    window.onload = function() {
+        const savedProfile = JSON.parse(localStorage.getItem('userProfile'));
+        if (savedProfile) {
+            document.getElementById('saved-name').textContent = savedProfile.name;
+            document.getElementById('saved-email').textContent = savedProfile.email;
+            document.getElementById('saved-phone').textContent = savedProfile.phone;
+            document.getElementById('saved-address').textContent = savedProfile.address;
+        }
+    };
+
+    // Handle form submission to save profile
+    document.getElementById('profile-form').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent form from submitting normally
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+
+        const userProfile = {
+            name: name,
+            email: email,
+            phone: phone,
+            address: address
+        };
+
+        // Save user profile to LocalStorage
+        localStorage.setItem('userProfile', JSON.stringify(userProfile));
+
+        // Update the profile display section
+        document.getElementById('saved-name').textContent = name;
+        document.getElementById('saved-email').textContent = email;
+        document.getElementById('saved-phone').textContent = phone;
+        document.getElementById('saved-address').textContent = address;
+
+        alert('Profile updated successfully');
+    });
+</script>
+
+</body>
+</html>

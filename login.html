@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login/Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="logincss.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  <style>
+    /* Include all your CSS styles from the provided CSS code */
+    @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Kablammo&display=swap');
+    .container form {
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding: 20px;
+      height: 100%;
+      overflow-y: auto;
+    }
+    .container input,
+    .container select,
+    .container label {
+      margin: 8px 0;
+      width: 100%;
+      font-size: 13px;
+    }
+    .container .radio-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    /* Navbar Styling */
+    .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">📍 Women Safety Map</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="livemap.html">Map</a></li>
+            <li><a href="contactlist.html">Contacts</a></li>
+            
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login/signup</a></li>
+        </ul>
+    </nav>
+<div class="container" id="container">
+  <!-- Sign Up Form -->
+  <div class="sign-up">
+    <form onsubmit="return validateSignup()">
+      <h2>Create Account</h2>
+      <div class="icons">
+        <a href="https://www.facebook.com/" class="icon"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" class="icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.google.co.in/" class="icon"><i class="fa-brands fa-google"></i></a>
+        <a href="https://github.com/" class="icon"><i class="fa-brands fa-github"></i></a>
+    </div>
+
+      <input type="text" id="signupFirstName" placeholder="First Name" required>
+      <input type="text" id="signupLastName" placeholder="Last Name" required>
+      <input type="text" id="signupUsername" placeholder="Username" required>
+      <input type="email" id="signupEmail" placeholder="Email Address" required>
+      <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" minlength="6" required>
+
+      <lable>Gender:</lable>
+      <select id="signupGender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+   
+
+      <input type="text" id="signupMobile" placeholder="Mobile Number" pattern="\d{10}" required>
+
+      <lable>Account Type:</lable>
+      <select id="signupAccountType">
+        <option value="business">Business</option>
+        <option value="personal">Personal</option>
+      </select>
+
+      <input type="text" id="signupLocation" placeholder="Location" required>
+
+      <div class="radio-group">
+        <label>Parental Controls:</label>
+        <label  style="text-align: center;">
+          <input type="radio" name="parentalControls" value="yes"> Yes
+        </label>
+        <label  style="text-align: center;">
+          <input type="radio" name="parentalControls" value="no"> No
+        </label>
+      </div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+
+  <!-- Sign In Form -->
+  <div class="sign-in">
+    <form onsubmit="return validateSignin()">
+        <h1>Sign In</h1>
+        <div class="icons">
+            <a href="https://www.facebook.com/" class="icon"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/" class="icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.google.co.in/" class="icon"><i class="fa-brands fa-google"></i></a>
+            <a href="https://github.com/" class="icon"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <span>or use email password</span>
+        <input type="text" placeholder="Email" id="loginUsername" />
+        <input type="password" placeholder="Password" id="loginPassword" />
+
+        <label class="kablammo-example" style="font-size: 25px;text-align: center;">
+            <input type="checkbox" id="rememberMe">Remember Me
+        </label>
+
+        <a href="ForgotPass.html">Forgot password?</a>
+        <button type="submit" id="loginBtn">Sign In</button>
+    </form>
+</div>
+
+  <!-- Toggle Panel -->
+  <div class="toogle-container">
+    <div class="toogle">
+      <div class="toogle-panel toogle-left">
+        <h2>Welcome Back!</h2>
+        <p>To keep connected, please log in with your personal info</p>
+        <button class="hidden" id="login">Sign In</button>
+      </div>
+      <div class="toogle-panel toogle-right">
+        <h2>Hello, Friend!</h2>
+        <p>Enter your details and start your journey with us</p>
+        <button class="hidden" id="register">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="sos-backend/scripit1.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incident Report Portal</title>
+  <link rel="stylesheet" href="report.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">📍 Women Safety Map</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="livemap.html">Map</a></li>
+            <li><a href="contactlist.html">Contacts</a></li>
+            <li><a href="aboutUs.html">About</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-overlay">
+      <div class="container">
+        <h1>Report an Incident</h1>
+        <p>Your safety is our top priority. Report any concerning behavior or unsafe situations.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Feature Cards -->
+    <section class="features">
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&q=80&w=400" alt="Privacy" class="feature-image">
+        <h3>Confidential Reporting</h3>
+        <p>All reports are handled with strict confidentiality and care</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?auto=format&fit=crop&q=80&w=400" alt="Support" class="feature-image">
+        <h3>24/7 Support Available</h3>
+        <p>Our dedicated team is here to help you around the clock</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1453738773917-9c3eff1db985?auto=format&fit=crop&q=80&w=400" alt="Action" class="feature-image">
+        <h3>Swift Response</h3>
+        <p>We take immediate action on all reported incidents</p>
+      </div>
+    </section>
+
+    <!-- Report Form -->
+    <section class="report-section">
+      <div class="form-container">
+        <h2>File Your Report</h2>
+        <form id="reportForm" class="report-form">
+          <div class="form-group">
+            <label for="incidentType">Type of Incident</label>
+            <select id="incidentType" required>
+              <option value="">Select incident type</option>
+              <option value="harassment">Harassment</option>
+              <option value="unsafe-condition">Unsafe Condition</option>
+              <option value="discrimination">Discrimination</option>
+              <option value="threat">Threat</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" rows="4" placeholder="Please provide detailed information about the incident..." required></textarea>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" id="location" placeholder="Where did this occur?" required>
+            </div>
+
+            <div class="form-group">
+              <label for="datetime">Date & Time</label>
+              <input type="datetime-local" id="datetime" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="evidence">Evidence Upload</label>
+            <input type="file" id="evidence" accept="image/*,.pdf" multiple>
+            <p class="help-text">Upload any relevant photos or documents (optional)</p>
+          </div>
+
+          <div class="form-group">
+            <label for="contact">Contact Information</label>
+            <input type="text" id="contact" placeholder="Your email or phone number (optional)">
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <span class="btn-text">Submit Report</span>
+            <span class="btn-icon">→</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="safety-gallery">
+      <h2>Our Commitment to Safety</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=600" alt="Safety First">
+          <p>Workplace Safety</p>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&q=80&w=600" alt="Community Support">
+          <p>Community Support</p>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=600" alt="Professional Team">
+          <p>Professional Team</p>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1553484771-8bbd4e16c60a?auto=format&fit=crop&q=80&w=600" alt="Secure Environment">
+          <p>Secure Environment</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Emergency Resources -->
+    <section class="emergency-resources">
+      <h2>Emergency Resources</h2>
+      <div class="resource-cards">
+        <div class="resource-card emergency">
+          <h3>Emergency Services</h3>
+          <p>If you're in immediate danger, please call:</p>
+          <div class="phone-number">911</div>
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=400" alt="Emergency Services" class="resource-image">
+        </div>
+        <div class="resource-card helpline">
+          <h3>24/7 Helpline</h3>
+          <p>For immediate support and counseling:</p>
+          <div class="phone-number">1-800-SUPPORT</div>
+          <img src="https://images.unsplash.com/photo-1590086783191-a0694c7d1e6e?auto=format&fit=crop&q=80&w=400" alt="Helpline Support" class="resource-image">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2024 Incident Report Portal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="report.js"></script>
+</body>
+</html>

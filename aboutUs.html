@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Women Safety Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar Styling */
+        
+            .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* About Section */
+        .about-container {
+            margin-top: 80px;
+            padding: 50px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .about-container h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about-container p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links ul,
+        .footer-social ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li,
+        .footer-social li {
+            margin: 10px 0;
+        }
+
+        .footer-links a,
+        .footer-social a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover,
+        .footer-social a:hover {
+            color: #3498db;
+        }
+
+        .footer-contact p {
+            font-size: 16px;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">📍 Women Safety Map</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="livemap.html">Map</a></li>
+            <li><a href="contactlist.html">Contacts</a></li>
+            <li><a href="aboutUs.html">About</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login/signup</a></li>
+        </ul>
+    </nav>
+
+    <div class="about-container">
+        <h1>About Us</h1>
+        <p>At Women Safety Map, we are committed to providing innovative solutions to ensure the safety and security of women everywhere. Our mission is to empower women by offering tools that allow them to stay informed and safe in their daily lives. With real-time alerts, safe route mapping, self-defense tips, and emergency assistance options, we strive to create a community where women can feel secure and confident.</p>
+        <p>Our platform leverages the latest technology to provide real-time updates on high-risk areas, safe zones, and much more. Whether you're traveling to a new area, walking home late at night, or just looking to stay informed, Women Safety Map has you covered.</p>
+        <img src="about-image.jpg" alt="About Us Image" />
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-links">
+            <ul>
+              <li><a href="#about.html">About Us</a></li>
+              <li><a href="#about.html">Contact</a></li>
+              <li><a href="#privacy">Privacy Policy</a></li>
+              <li><a href="#terms">Terms of Service</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-social">
+            <ul>
+              <li><a href="https://www.facebook.com" target="_blank" class="social-icon">Facebook</a></li>
+              <li><a href="https://twitter.com" target="_blank" class="social-icon">Twitter</a></li>
+              <li><a href="https://www.instagram.com" target="_blank" class="social-icon">Instagram</a></li>
+              <li><a href="https://www.linkedin.com" target="_blank" class="social-icon">LinkedIn</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-contact">
+            <p>For support, email us at: <a href="mailto:sehajsomal5@shield3.com">support@shield3.com</a></p>
+          </div>
+        </div>
+      
+        <div class="footer-bottom">
+          <p>&copy; 2025 Shield3. All rights reserved.</p>
+        </div>
+      </footer>
+
+</body>
+</html>

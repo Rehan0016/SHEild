@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety Map</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 30px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Image Container */
+.image-container {
+    margin-top: 0px;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+}
+
+/* Text Box Positioned to Top-Left */
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    max-width: 40%;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.text-box h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.text-box p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Info Section */
+.info-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background: #f4f4f4;
+}
+
+.info-box {
+    width: 32%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.info-box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.info-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+.info-box h2, .info-box p {
+    position: relative;
+    z-index: 2;
+}
+
+.info-box:hover {
+    transform: translateY(-78px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Make last info-box full-width and fit image correctly */
+.info-box:last-child {
+    width: 100%;
+    height: 400px;
+    margin-top: 30px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* SOS Button and Fake Call Styling */
+#fakecall {
+    background-color: rgb(245, 7, 7);
+    color: white;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#fakecall:hover {
+    background-color: #333;
+}
+
+#sosButton {
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 10px;
+}
+
+#sosButton:hover {
+    background-color: darkred;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-links ul,
+.footer-social ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li,
+.footer-social li {
+    margin: 10px 0;
+}
+
+.footer-links a,
+.footer-social a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+    color: #3498db;
+}
+
+.footer-contact p {
+    font-size: 16px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                border-radius: 8px;
+                width: 200px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .navbar.open .nav-links {
+            display: flex;
+        }
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .image-container {
+        height: 60vh;
+    }
+
+    .text-box {
+        top: 20%;
+        left: 10%;
+        max-width: 80%;
+    }
+
+    .info-section {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .info-box {
+        width: 100%;
+        height: 250px;
+        margin-bottom: 20px;
+    }
+
+    .info-box:last-child {
+        width: 100%;
+        height: 300px;
+    }
+
+    #fakecall, #sosButton {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-box h1 {
+        font-size: 30px;
+    }
+
+    .text-box p {
+        font-size: 16px;
+    }
+
+    .info-box h2 {
+        font-size: 22px;
+    }
+
+    .info-box p {
+        font-size: 14px;
+    }
+
+    .footer-contact p {
+        font-size: 14px;
+    }
+}
+
+
+
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/handtrackjs@0.0.12/dist/handtrack.min.js"></script>
+
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">📍 Women Safety Map</div>
+        <ul class="nav-links">
+            
+            <li><a href="livemap.html">Map</a></li>
+            <li><a href="contactlist.html">Contacts</a></li>
+            <li><a href="aboutUs.html">About</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login/signup</a></li>
+        </ul>
+    </nav>
+
+    <div class="image-container">
+        <img src="kjh.jpg" alt="Safety Image">
+        <div class="text-box">
+            <h1>Ensuring Women's Safety</h1>
+            <p>Explore safe zones and avoid high-risk areas with our interactive safety map. Stay informed, stay safe, and empower yourself with real-time updates.</p>
+            <button id="fakecall">Fake Call</button>
+            <button id="sosButton">🚨 SOS Alert</button>
+
+        </div>
+    </div>
+
+    <!-- Three Equal Divs with Background Images -->
+    <div class="info-section">
+        <div class="info-box" style="background-image: url('pexels-clickerhappy-1128843.jpg');">
+            <a href="report.html" style="text-decoration: none; color: #f4f4f4;">
+            <h2>Report Crimes</h2>
+            <p>Get instant alerts about high-risk areas and stay informed on the go.</p>
+            </a>
+        </div>
+        <div class="info-box" style="background-image: url('map.jpg');">
+            <a href="sos-backend/selfdefence.html" style="text-decoration: none; color: #f4f4f4;">
+            <h2>Essential Self-Defense Tips</h2>
+            <p>Your safety is our top priority. Report any concerning behavior or unsafe situations</</p>
+            </a>
+        </div>
+        <div class="info-box" style="background-image: url('routes.jpg') ;">
+            <a href="livemap.html" style="text-decoration: none; color: #f4f4f4;">
+            <h2>Safe Routes</h2>
+            <p>Find the safest paths to your destination with our AI-powered map.</p>
+            </a>
+        </div>
+
+        <!-- Full-width Info Box with Better Image Fit -->
+         
+        <div class="info-box" style="background-image: url('pexels-mikhail-nilov-8107905.jpg'); ">
+            <a href="emerg.html" style="text-decoration: none; color: #f4f4f4;">
+            <h2>Emergency Assistance</h2>
+            <p>Access emergency services and reach out for help instantly.</p>
+            </a>
+        </div>
+        
+        
+    </div>
+
+
+
+    <audio id="ringtone" src="Hello sound effect (Man) [ ezmp3.cc ].mp3"></audio>
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-links">
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#privacy">Privacy Policy</a></li>
+              <li><a href="#terms">Terms of Service</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-social">
+            <ul>
+              <li><a href="https://www.facebook.com" target="_blank" class="social-icon">Facebook</a></li>
+              <li><a href="https://twitter.com" target="_blank" class="social-icon">Twitter</a></li>
+              <li><a href="https://www.instagram.com" target="_blank" class="social-icon">Instagram</a></li>
+              <li><a href="https://www.linkedin.com" target="_blank" class="social-icon">LinkedIn</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-contact">
+            <p>For support, email us at: <a href="mailto:support@shield3.com">support@shield3.com</a></p>
+          </div>
+        </div>
+      
+        <div class="footer-bottom">
+          <p>&copy; 2025 Shield3. All rights reserved.</p>
+        </div>
+      </footer>
+      
+    
+    <script>
+        localStorage.setItem("emergencyContacts", JSON.stringify([
+  { name: "Mom", phone: "+91 6280511919", email: "sehajsomal5@gmail.com" },
+ 
+]));
+        document.getElementById("fakecall").addEventListener("click", function() {
+            let ringtone = document.getElementById("ringtone");
+            ringtone.play();
+            alert("Incoming Fake Call... 📞");
+        });
+        document.getElementById("sosButton").addEventListener("click", async function() {
+    alert("🚨 SOS Activated! Calling & Sending Alerts...");
+
+    // Step 1: Get Emergency Contacts from localStorage
+    let contacts = JSON.parse(localStorage.getItem("emergencyContacts")) || [];
+    
+    if (contacts.length > 0) {
+        let firstContact = contacts[0].phone;
+        window.location.href = `tel:${firstContact}`; // Call first emergency contact
+
+        // Step 2: Send SMS & Email via Backend API
+        try {
+            await fetch("http://localhost:5000/send-alert", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ contacts }),
+            });
+            alert("📩 Alerts sent successfully!");
+        } catch (error) {
+            console.error("Error sending alerts:", error);
+            alert("❌ Failed to send alerts.");
+        }
+    } else {
+        alert("⚠ No emergency contacts found!");
+    }
+});
+
+// Handle errors
+recognition.onerror = function(event) {
+    console.error("Speech Recognition Error:", event);
+};
+
+// When the SOS button is clicked manually
+
+  function getEmergencyContacts() {
+    // Get contacts from local storage
+    let contacts = JSON.parse(localStorage.getItem("emergencyContacts")) || [];
+
+    if (contacts.length === 0) {
+      alert("❌ No emergency contacts found. Please add contacts first!");
+      return null;
+    }
+    return contacts;
+  }
+
+  function sendEmergencyAlert() {
+    let contacts = getEmergencyContacts();
+    if (!contacts) return;
+
+    contacts.forEach(contact => {
+      console.log(`📞 Calling: ${contact.name} at ${contact.phone}`);
+      console.log(`📩 Sending SMS to: ${contact.phone}`);
+      console.log(`📧 Sending Email to: ${contact.email}`);
+
+      // Simulate calling, sending SMS, and email
+      alert(`🚨 Emergency Alert Sent to ${contact.name}!`);
+    });
+  }
+
+  document.getElementById("sosButton").addEventListener("click", sendEmergencyAlert);
+
+  
+
+
+
+
+  const video = document.getElementById("video");
+        const sosButton = document.getElementById("sosButton");
+
+        // Setup Handtrack.js model
+        const modelParams = {
+            flipHorizontal: true,   // Flip the video feed horizontally
+            maxNumBoxes: 1,         // Detect one hand at a time
+            iouThreshold: 0.5,      // Minimum intersection-over-union (IOU) for a detected box
+            scoreThreshold: 0.6     // Minimum confidence score for detection
+        };
+
+        // Load the handtrack.js model
+        handTrack.load(modelParams).then(model => {
+            // Start the webcam and detect gestures
+            handTrack.startVideo(video).then(status => {
+                if (status) {
+                    console.log("Webcam started. Detecting gestures...");
+                    detectHand(model); // Start hand gesture detection
+                } else {
+                    console.error("Please enable webcam.");
+                }
+            });
+        });
+
+        // Gesture detection function
+        function detectHand(model) {
+            model.detect(video).then(predictions => {
+                if (predictions.length > 0) {
+                    const hand = predictions[0]; // Take the first detected hand
+
+                    // Check if hand is in fist gesture (this is a rough estimate)
+                    if (hand.label === "fist") {
+                        triggerSOS();
+                    }
+                }
+
+                // Continue detecting hands
+                requestAnimationFrame(() => detectHand(model));
+            });
+        }
+
+        // Function to trigger SOS button click
+        function triggerSOS() {
+            sosButton.click(); // Simulate click on SOS button
+            alert("🚨 SOS Activated! Calling Emergency Contacts...");
+            console.log("🚨 SOS Activated!");
+        }
+
+
+
+
+    </script>
+    
+</body>
+</html>
